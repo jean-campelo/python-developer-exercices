@@ -1,9 +1,10 @@
 menu = """
-==== Menu ====
-[1] - depósito
-[2] - withdraw
-[3] - extrato
-[0] - sair
+======= Menu =======
+|   [1] - depósito  |
+|   [2] - saque     |
+|   [3] - extrato   |
+|   [0] - sair      |
+====================
 """
 
 saldo = 0
