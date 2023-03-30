@@ -1,7 +1,7 @@
 menu = """
 ==== Menu ====
 [1] - depósito
-[2] - saque
+[2] - withdraw
 [3] - extrato
 [0] - sair
 """
@@ -31,21 +31,25 @@ while True:
     elif opcao == 2:
         valor_saque = float(input("Digite o valor do saque: "))
 
+        excedeu_limite_diario = qtd_saques >= LIMITE_SAQUES_DIARIO
+        excedeu_valor_saque = valor_saque >= limite_saque
+        saldo_insuficiente = valor_saque > saldo
+
         if valor_saque < 0:
             print("Valor inválido!")
             continue
 
-        elif qtd_saques == LIMITE_SAQUES_DIARIO:
+        elif excedeu_limite_diario:
             print(
                 f"Você excedeu o limite de {LIMITE_SAQUES_DIARIO} saques diários.")
             continue
 
-        elif valor_saque >= limite_saque:
+        elif excedeu_valor_saque:
             print(
                 f"Não é possível realizar o saque de R$ {valor_saque:.2f}, pois ultrapassa o limite de R$ {limite_saque:.2f}.")
             continue
 
-        elif valor_saque > saldo:
+        elif saldo_insuficiente:
             print(f"Operação inválida, pois excede o saldo de R$ {saldo:.2f}")
             continue
 
